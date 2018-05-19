@@ -57,7 +57,8 @@ module JekyllAdmin
     end
 
     def host
-      JekyllAdmin.site.config["host"].sub("127.0.0.1", "localhost")
+      ENV['OVERRIDE_HOST'].presence ||
+        JekyllAdmin.site.config["host"].sub("127.0.0.1", "localhost")
     end
 
     def port
